@@ -9,4 +9,4 @@ class Contact extends bookshelf.Model {
   }
 }
 
-module.exports = bookshelf.Model("Contact", Contact);
+module.exports = bookshelf.model("Contact", Contact);

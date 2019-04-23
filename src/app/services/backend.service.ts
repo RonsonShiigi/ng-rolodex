@@ -6,4 +6,11 @@ import { HttpClient } from "@angular/common/http";
 })
 export class BackendService {
   url: string = "http://localhost:4200";
+
+  constructor(private http: HttpClient) {}
+
+  getContacts() {
+    const endpoint = this.url + "/api/contacts";
+    return this.http.get(endpoint).toPromise();
+  }
 }
