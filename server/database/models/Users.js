@@ -2,7 +2,7 @@ const bookshelf = require("../bookshelf");
 
 class User extends bookshelf.Model {
   get tableName() {
-    return "contacts";
+    return "users";
   }
 
   get hasTimestamps() {
@@ -10,4 +10,4 @@ class User extends bookshelf.Model {
   }
 }
 
-module.exports = bookshelf.Model("User", User);
+module.exports = bookshelf.model("User", User);

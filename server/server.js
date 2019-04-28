@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const contactRoutes = require("./routes/contacts/index");
+const userRoutes = require("./routes/users/index");
 const decorator = require("./database/decorator");
 
 //data vars
@@ -27,6 +28,7 @@ app.use(bodyParser.json({ extended: true }));
 app.use(decorator);
 
 app.use("/api", contactRoutes);
+app.use("/users", userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is Running on Port : ${PORT}`);

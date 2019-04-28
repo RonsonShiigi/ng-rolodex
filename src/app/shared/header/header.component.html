@@ -1,3 +1,38 @@
+<link
+  href="https://fonts.googleapis.com/css?family=Gugi|Roboto"
+  rel="stylesheet"
+/>
+
 <div class="header-container">
-  HEADER IS HERE
+  <h1 class="left">Rolodex</h1>
+
+  <div class="middle">
+    <ul class="list" style="list-style: none">
+      <li>
+        <h2>
+          <a routerLink="/">Home</a>
+        </h2>
+      </li>
+      <li>
+        <h2>
+          <a routerLink="contact">View Contacts</a>
+        </h2>
+      </li>
+      <li>
+        <h2>
+          <a routerLink="create">Create Contact</a>
+        </h2>
+      </li>
+    </ul>
+  </div>
+
+  <div class="right">
+    <div class="logged-in" *ngIf="isLoggedIn()">
+      Welcome, {{ user.username }}
+      <button (click)="logout()">Log Out</button>
+    </div>
+    <div class="logged-out" *ngIf="!user.loggedIn">
+      <button (click)="logout()">Login</button>
+    </div>
+  </div>
 </div>

@@ -28,6 +28,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this._subscription.subscribe(
       (loggedIn: boolean) => {
         this._isLoggedIn = loggedIn;
+        console.log("look at me", this.session.user);
+        this.user.username = this.session.user.username;
       },
       (error: any) => {
         console.log(error);
@@ -35,13 +37,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     );
   }
 
-  getIsLoggedIn() {
-    return this._isLoggedIn;
-  }
+  // getIsLoggedIn() {
+  //   return this._isLoggedIn;
+  // }
 
-  //   isLoggedIn(){
-  //       return this.session.isLoggedIn()
-  //   }
+  isLoggedIn() {
+    return this.session.isLoggedIn();
+  }
 
   login() {
     return this.router.navigate(["/login"]);

@@ -6,11 +6,17 @@ import { HttpClient } from "@angular/common/http";
 })
 export class BackendService {
   url: string = "http://localhost:4200";
+  loginUrl: string = "http://localhost:8080";
 
   constructor(private http: HttpClient) {}
 
   getContacts() {
     const endpoint = this.url + "/api/contacts";
+    return this.http.get(endpoint).toPromise();
+  }
+
+  getUsers() {
+    const endpoint = this.url + "/api/users";
     return this.http.get(endpoint).toPromise();
   }
 
@@ -21,6 +27,8 @@ export class BackendService {
 
   login(user: { username: string }) {
     const endpoint = this.url + "/api/login";
+    console.log("backendConsole", user);
+
     return this.http.post(endpoint, user).toPromise();
   }
 

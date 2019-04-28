@@ -7,8 +7,10 @@ import { BehaviorSubject } from "rxjs";
 export class SessionService {
   user: {
     username: string;
+    loggedIn: boolean;
   } = {
-    username: ""
+    username: "",
+    loggedIn: false
   };
 
   //subject to hold isLoggedIn value (default = false)
@@ -36,7 +38,7 @@ export class SessionService {
   setSession(user: { username: string }) {
     //save to memory
     this.user.username = user.username;
-
+    this.user.loggedIn = true;
     //save to localStorage
     let userString = JSON.stringify(this.user);
     window.localStorage.setItem("user", userString);
@@ -56,6 +58,10 @@ export class SessionService {
   //helper methods
   getSession() {
     return this.user;
+  }
+
+  isLoggedIn() {
+    return this.user.loggedIn;
   }
 
   isLoggedInAsObservable() {

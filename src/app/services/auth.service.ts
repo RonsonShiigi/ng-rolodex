@@ -16,9 +16,17 @@ export class AuthService {
   }
 
   login(user: { username: string }) {
-    return this.backend.login(user).then((user: { username: string }) => {
-      return this.session.setSession(user);
-    });
+    console.log("auth1", user);
+
+    return this.backend
+      .login(user)
+      .then((user: { username: string }) => {
+        console.log("authShite2", user);
+        return this.session.setSession(user);
+      })
+      .catch(e => {
+        console.log(e);
+      });
   }
 
   logout() {
